@@ -16,7 +16,7 @@ Link: https://github.com/johnpapa/lite-server
   }
   ...
   ```
-- after the instalation is complete you need to create a script in your **package.json** file.
+- after the installation is complete you need to create a script in your **package.json** file.
 
   ```json
   ...
@@ -31,8 +31,8 @@ Link: https://github.com/johnpapa/lite-server
 
   ```json
   {
-    "port": 8000, // port to server the conent
+    "port": 8000, // set port 
     "files": ["./src/**/*.{html,htm,css,js}"], // files to watch for changes
-    "server": { "baseDir": "./base" } // paht to the index.html file
+    "server": { "baseDir": "./base" } // path to the index.html file
   }
   ```
