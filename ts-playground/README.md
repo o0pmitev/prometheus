@@ -20,3 +20,19 @@ const myTuple: [ string, number ] = ['hello', 10, 10]; // --> this will give you
 //or
 const myTuple: [ string, number ] = [ ]; // --> this will give you an error because we are assigning less values than required
 ``` 
+---
+
+### Enum
+From TS [docs](https://www.typescriptlang.org/docs/handbook/enums.html):
+> _Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. TypeScript provides both numeric and string-based enums._
+```ts
+    enum MyEnum {ADMIN, AUTHOR, READ_ONLY}; // => by default ADMIN = 0, AUTHOR = 1, READ_ONLY = 2;
+
+    enum RoleEnum {ADMIN='admin', AUTHOR='author', READ_ONLY='read_only'};
+    const person = {
+        name: "Plamen",
+        age: 32,
+        hobbies: ["Sport", "Gaming"],
+        role: RoleEnum.ADMIN;
+    }
+```
