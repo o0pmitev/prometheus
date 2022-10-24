@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://pixijs.download/release/pixi.js"></script>
+</head>
+<body>
+    <script>
+        /**
+         * Application is helper method that creates 
+         * - renderer 
+         * - stage
+         * - start ticker for updating 
+         * In production you almost certainly want to do these steps yourself,
+         * for adding customization and control.  
+        */
+        let app = new PIXI.Application({width: 640, heigh: 360});
+        
+        // takes the view created by the application and add it to the body of the page
+        document.body.appendChild(app.view);
+
+        let sprite = PIXI.Sprite.from("https://pm-storage.github.io/image_container/day-5-1000.png");   
+        sprite.y = 180;
+        app.stage.addChild(sprite);
+
+        // Add a variable to count up the seconds our demo has been running
+        let elapsed = 0.0;
+        // Tell our application's ticker to run a new callback every frame, passing
+        // in the amount of time that has passed since the last tick
+        app.ticker.add((delta) => {
+            // Add the time to our total elapsed time
+            elapsed += delta;
+            // Update the sprite's X position based on the cosine of our elapsed time.  We divide
+            // by 50 to slow the animation down a bit...
+            sprite.x = 100.0 + Math.cos(elapsed/50.0) * 100.0;
+        })
+    </script>
+</body>
+</html>

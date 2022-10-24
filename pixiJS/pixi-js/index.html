@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://pixijs.download/release/pixi.js"></script>
+</head>
+<body>
+    <script>
+        let app = new PIXI.Application({width: 640, heigh: 360}); 
+        document.body.appendChild(app.view);
+
+        //Create a window frame
+
+        let frame = new PIXI.Graphics();
+        frame.beginFill(0x666666);
+        frame.lineStyle({color: 0xffffff, width: 4, alignment: 0});
+        frame.drawRect(0, 0, 208, 208);
+        frame.position.set(320  - 104, 180 - 104);
+        app.stage.addChild(frame);
+
+        // create a graphic object to define our mask
+        let mask = new PIXI.Graphics();
+        mask.beginFill(0xffffff);
+        mask.drawRect(0, 0, 200, 200);
+        mask.endFill();
+        
+        // Add container that will hold our masked content
+        let maskContainer = new PIXI.Container();
+        
+        // Set the mask to use our graphics object from above
+        maskContainer.mask = mask;
+
+        // Add the mask as a child, so that the mask is positioned relative to its parent
+        maskContainer.addChild(mask);
+
+        // Offset the window frame with
+        maskContainer.position.set(4, 4);
+        frame.addChild(maskContainer);
+    </script>
+</body>
+</html>
