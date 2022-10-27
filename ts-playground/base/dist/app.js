@@ -5,8 +5,8 @@ class Department {
         this.name = name;
         this.id = id;
     }
-    describe() {
-        console.log(`Department ${this.name}, id: ${this.id}`);
+    static createEmployee(name) {
+        return { name: name };
     }
     set setEmployee(employee) {
         this.employees.push(employee);
@@ -17,10 +17,14 @@ class Department {
         return this.employees;
     }
 }
+Department.fiscalYear = 2020;
 class ITDepartment extends Department {
     constructor(id, admins) {
         super("IT", id);
         this.admins = admins;
+    }
+    describe() {
+        console.log("It Department - ID:" + this.id);
     }
 }
 class Accounting extends Department {
@@ -34,6 +38,16 @@ class Accounting extends Department {
             return this.lastReport;
         }
         throw new Error('No report found');
+    }
+    static getInstance() {
+        if (Accounting.instance) {
+            return this.instance;
+        }
+        this.instance = new Accounting(12, []);
+        return this.instance;
+    }
+    describe() {
+        console.log("THIS IS ACCOUNTING:" + this.id);
     }
     set setEmployee(name) {
         if (name.length < 3) {
@@ -50,10 +64,15 @@ class Accounting extends Department {
         return this.reports;
     }
 }
+const employee1 = Department.createEmployee('Plamen');
+console.log("Employee 1 ====> ", employee1);
+console.log(Department.fiscalYear);
 const it = new ITDepartment(22, ["Plamen", "Mitev"]);
 console.log(it);
 it.describe();
-const accounting = new Accounting(12, []);
+const accounting = Accounting.getInstance();
+const accounting2 = Accounting.getInstance();
+console.log('they are the same object', accounting, accounting2);
 accounting.setReports('Something get wrong');
 accounting.setEmployee = 'Plamen';
 accounting.setEmployee = 'Velichka';

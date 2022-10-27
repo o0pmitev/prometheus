@@ -1,4 +1,5 @@
-class Department {
+abstract class Department {
+    static fiscalYear: number = 2020;
     name: string;
     protected employees: string[] = [];
     readonly id: number;
@@ -18,9 +19,12 @@ class Department {
      *   const accCopy = {name: "Department Name", describe: accounting.describe}
      *   accCopy.describe()
      */
-    public describe(this: Department): void {
-        console.log(`Department ${this.name}, id: ${this.id}`);
+
+    static createEmployee(name: string) {
+        return { name: name };
     }
+
+    abstract describe(this: Department): void;
 
     public set setEmployee(employee: string) {
         this.employees.push(employee);
@@ -40,11 +44,15 @@ class ITDepartment extends Department {
         super("IT", id);
         this.admins = admins;
     }
+    describe(this: Department): void {
+        console.log("It Department - ID:" + this.id);
+    }
 }
 
 
 class Accounting extends Department {
     private lastReport: string;
+    private static instance: Accounting;
 
     get mostRecentReport() {
         if (this.lastReport) {
@@ -54,10 +62,22 @@ class Accounting extends Department {
     }
 
     private reports: string[];
-    constructor(id: number, reports: string[]) {
+    private constructor(id: number, reports: string[]) {
         super("Accounting", id);
         this.reports = reports;
         this.lastReport = reports[0];
+    }
+
+    static getInstance() {
+        if (Accounting.instance) {
+            return this.instance
+        }
+        this.instance = new Accounting(12, []);
+        return this.instance
+    }
+
+    describe(this: Department): void {
+        console.log("THIS IS ACCOUNTING:" + this.id)
     }
     //ovverides Department setter
     public set setEmployee(name: string) {
@@ -77,11 +97,20 @@ class Accounting extends Department {
     }
 }
 
+
+
+
+
+const employee1 = Department.createEmployee('Plamen');
+console.log("Employee 1 ====> ", employee1);
+console.log(Department.fiscalYear);
 const it = new ITDepartment(22, ["Plamen", "Mitev"]);
 console.log(it)
 it.describe();
 
-const accounting = new Accounting(12, []);
+const accounting = Accounting.getInstance();
+const accounting2 = Accounting.getInstance();
+console.log('they are the same object', accounting, accounting2)
 accounting.setReports('Something get wrong');
 accounting.setEmployee = 'Plamen';
 accounting.setEmployee = 'Velichka';
