@@ -1,6 +1,6 @@
 
 # Course Notes 
-## TypeScript Basics & Basic Types
+## Section 2:  TypeScript Basics & Basic Types
 
 ### Tuples
 
@@ -36,13 +36,6 @@ From TS [docs](https://www.typescriptlang.org/docs/handbook/enums.html):
         role: RoleEnum.ADMIN;
     }
 ```
-
-# TypeScript Notes
-
-https://www.udemy.com/course/understanding-typescript/learn/lecture/16888066#overview
-
-## Section 2: Typescript Basics & Basic Types
-
 ### Core types:
 
 | type    | value             | description                                                                       |
@@ -55,20 +48,6 @@ https://www.udemy.com/course/understanding-typescript/learn/lecture/16888066#ove
 | Tuple   | [1,2]             | Added by TypeScript: Fixed-length array                                           |
 | Enum    | enum { NEW, OLD } | Added by TypeScript: Automatically enumerated global constant identifiers         |
 | Any     |                   | Most flexible type. !!! To be avoided !!!                                         |
-
-<p style='font-size: 11px; text-align: right;'>[basic.ts], [obj-arays-enums.ts]</p>
-
-##### [ts-files/union-aliases.ts]
-
-...
-
-##### [ts-files/functions.ts]
-
-...
-
-##### [ts-files/unknown-and-never]
-
-...
 
 [Everyday Types-TSDocs](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 
