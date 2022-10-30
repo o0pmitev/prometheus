@@ -1,13 +1,9 @@
 "use strict";
-class Person {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    greet(phrase) {
-        console.log(`${phrase} ${this.name}, ${this.age} years old`);
-    }
-}
-const person1 = new Person('Plamen', 32);
-person1.greet('Hello ');
+const userInput = document.getElementById('inputElement');
+userInput.value = "Hi there.";
+console.log(userInput.value);
+const errorBag = {
+    email: "Not a valid email!",
+    username: "Must start with a capital character!"
+};
 //# sourceMappingURL=app.js.map
