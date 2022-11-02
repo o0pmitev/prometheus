@@ -1,53 +1,23 @@
 "use strict";
-function merge(arg1, arg2) {
-    return Object.assign(Object.assign({}, arg1), arg2);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+function Logger(constructor) {
+    console.log("Logging....");
+    console.log(constructor);
 }
-const nameObj = { name: "Plamen" };
-const ageObj = { age: 32 };
-const mergeObj = merge(nameObj, ageObj);
-console.log(mergeObj.name);
-console.log(mergeObj.age);
-mergeObj.name = 'Mitev';
-console.log(mergeObj.name);
-console.log(nameObj.name);
-function newMerge(arg1, arg2) {
-    return { arg1, arg2 };
-}
-const newObject = newMerge({ name: "Plamen", age: 32 }, { name: "Velichka", age: 30 });
-console.log(newObject.arg1);
-console.log(newObject.arg2.name);
-function countAndDescribe(element) {
-    let descriptionText = 'Got no value';
-    if (element.length === 1) {
-        descriptionText = "Got 1 element";
-    }
-    else if (element.length > 0) {
-        descriptionText = "Got " + element.length + " elements";
-    }
-    return [element, descriptionText];
-}
-console.log(countAndDescribe("Hi there!"));
-function extractAndConvert(obj, key) {
-    return "Value: " + obj[key];
-}
-console.log(extractAndConvert({ name: "Plamnen" }, "name"));
-class DataStorage {
+let Person = class Person {
     constructor() {
-        this.data = [];
+        this.name = "Plamen";
+        console.log('Crastiong person object');
     }
-    addItem(item) {
-        this.data.push(item);
-    }
-    removeItem(item) {
-        this.data.splice(this.data.indexOf(item), 1);
-    }
-    getItems() {
-        return [...this.data];
-    }
-}
-const textStorage = new DataStorage();
-textStorage.addItem("Plamen");
-textStorage.addItem("Mitev");
-textStorage.removeItem("Plamen");
-console.log(textStorage.getItems());
+};
+Person = __decorate([
+    Logger
+], Person);
+const pers = new Person();
+console.log(pers);
 //# sourceMappingURL=app.js.map
