@@ -232,3 +232,7 @@ const numberStorage = new DataStorage<number>();
 ##### [generic-utility-types.ts]
 
 More on Generics: https://www.typescriptlang.org/docs/handbook/generics.html
+
+### Decorators
+
+> Decorators execute when your class is _DEFINED_, **NOT** when is _INSTANTIATED_. In other words decorator runs when JavaScript finds your class definition, your constructor function definition **NOT** when you use that constructor function to instantiate an object.
