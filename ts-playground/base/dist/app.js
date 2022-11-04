@@ -45,4 +45,37 @@ Person = __decorate([
 ], Person);
 const pers = new Person();
 console.log(pers);
+function Log(target, propertyName) {
+    console.log("Property decorator");
+    console.log(target, propertyName);
+}
+function Log2(target, name, descriptor) {
+    console.log("Access decorator!");
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
+}
+class Product {
+    constructor(title, price) {
+        this.title = title;
+        this._price = price;
+    }
+    set price(val) {
+        if (val > 0) {
+            this._price = val;
+        }
+        else {
+            throw new Error("Inavlid price - should be positive");
+        }
+    }
+    getPriceWithTax(tax) {
+        return this._price * (1 + tax);
+    }
+}
+__decorate([
+    Log
+], Product.prototype, "title", void 0);
+__decorate([
+    Log2
+], Product.prototype, "price", null);
 //# sourceMappingURL=app.js.map
