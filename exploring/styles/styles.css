@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+@media screen and (min-width: 992px) {
+  body {
+    background-color: blue;
+    display: grid;
+    grid-template:
+      "nav main" 30px 
+       "nav  main" 1fr 
+      "nav  foot" 30px
+      / 120px 1fr;
+  }
+
+  nav {
+    height: 100vh;
+    width: 30%;
+  }
+
+  header {
+    grid-area: head;
+  }
+  nav { 
+    grid-area: nav;
+  }
+  main { 
+    grid-area: main;
+    display: flex;
+    flex-direction: column
+  }
+  footer {
+    grid-area: foot;
+  }
+  
+  #canvas {
+    height:  100%;  
+  }
+  
+}
