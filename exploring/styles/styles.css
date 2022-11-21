@@ -5,7 +5,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+body {
+  overflow: hidden;
+}
 
 @media screen and (min-width: 992px) {
   body {
@@ -16,6 +18,20 @@
        "nav  main" 1fr 
       "nav  foot" 30px
       / 120px 1fr;
+  }
+
+  figure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .castle {
+    height: 100%;
+    display: block;
+    margin: 0 auto;
   }
 
   nav {
@@ -35,11 +51,14 @@
     flex-direction: column
   }
   footer {
+    z-index: 2;
     grid-area: foot;
   }
   
   #canvas {
-    height:  100%;  
+    height: 380px;
+    margin-top: auto;
+    z-index: 1;
   }
   
 }
