@@ -1,5 +1,5 @@
 # Welcome
-
+This is my Codespace playground. I am using it for learning, documenting, and experimenting.
 ## Dev environment
 
 ### Configure lite-server
