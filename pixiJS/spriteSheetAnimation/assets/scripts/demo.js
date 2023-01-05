@@ -2,39 +2,27 @@ let app = new PIXI.Application({
   width: 800,
   height: 450
 });
-
 document.body.appendChild(app.view);
 
 let background, animatedCapguy;
-const capguyFrames = [
-  "assets/sprites/capguy/walk_01.png",
-  "assets/sprites/capguy/walk_02.png",
-  "assets/sprites/capguy/walk_03.png",
-  "assets/sprites/capguy/walk_04.png",
-  "assets/sprites/capguy/walk_05.png",
-  "assets/sprites/capguy/walk_06.png",
-  "assets/sprites/capguy/walk_07.png",
-  "assets/sprites/capguy/walk_08.png",
-]
+const loader = new PIXI.Loader();
 
-app.loader
-  .add("assets/sprites/background.png")
-  .add(capguyFrames)
+loader
+  .add("assets/sprites/spritesheet.json")
   .load(setup);
 
 
 function setup() {
-  let resources = app.loader.resources;
-
-  background = new PIXI.Sprite(resources["assets/sprites/background.png"].texture);
+  let sheet = loader.resources["assets/sprites/spritesheet.json"];
+  background = new PIXI.Sprite(sheet.textures["background.png"]);
   app.stage.addChild(background);
 
   app.stage.scale.x = app.view.width / background.width;
   app.stage.scale.y = app.view.height / background.height;
 
-  animatedCapguy = new PIXI.AnimatedSprite.fromFrames(capguyFrames);
+  animatedCapguy = new PIXI.AnimatedSprite(sheet.spritesheet.animations["capguy/walk"]);
 
-  animatedCapguy.animationSpeed = 1/6; // 6fps
+  animatedCapguy.animationSpeed = 0.167; // 6fps
   animatedCapguy.position.set(0, background.height - 350); // 100
   animatedCapguy.play();
 
