@@ -4,12 +4,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaps</title>
+  <title>Capturing and bubling</title>
+  <style>
+
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *::before, *::after {box-sizing: inherit;}
+
+    section {
+      width: 100%;
+      padding: 100px;
+    }
+
+    .one { background-color: black; }
+    .two { background-color: tomato; }
+    .three { background-color: yellowgreen; }
+  </style>
 </head>
 <body>
-  <input type="button" value="Click me" id="elem">
-  <button id="button">Hello World!</button>
-  <script src="./scripts/events_and_handledrs.js" defer></script>
+  <section class="one">
+    <section class="two">
+      <section class="three">
+
+      </section>
+    </section>
+  </section>
+  <script src="./scripts/capturing_and_bubling.js" defer></script>
 </body>
 </html>
-
