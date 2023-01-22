@@ -1,6 +1,7 @@
 # Events
 
-<small>Check <b>events_and_handledrs.js</b> file for more details and examples.</small>
+<small>Check <b>scripts/events_and_handledrs.js</b> file for more details and examples.</small>
+<small>Check <b>scripts/capturing_and_bubling.js</b> file for more details and examples.</small>
 
 > Events **don't start** at the element you trigger them on. Events **awlays start at the root**.
 
@@ -33,6 +34,7 @@
 </html>
 ```
 ![screen-1](./images/events_and_handlers/screen-1.png "figure-1")
+![figure-2](./images/events_and_handlers/figure-2.png "figure-2")
 
 ## Summary 
 
@@ -54,10 +56,10 @@
   References and resources
   <ul>
     <li>
-      <a src="https://javascript.info/introduction-browser-events" style="color: yellow; cursor: pointer"> Introduction to browser events</a>
+      <a src="https://javascript.info/introduction-browser-events" style="color: naviblue; cursor: pointer"> Introduction to browser events</a>
     </li>
         <li>
-      <a src="https://www.kirupa.com/html5/event_capturing_bubbling_javascript.htm" style="color: yellow; cursor: pointer">Event capturing bubbling javascript</a>
+      <a src="https://www.kirupa.com/html5/event_capturing_bubbling_javascript.htm" style="color: naviblue; cursor: pointer">Event capturing bubbling javascript</a>
     </li>
   </ul>
 </small>
