@@ -33,8 +33,8 @@
 
 </html>
 ```
-![screen-1](./images/events_and_handlers/screen-1.png "figure-1")
-![figure-2](./images/events_and_handlers/figure-2.png "figure-2")
+![screen-1](../images/screen-1.png "figure-1") 
+![figure-2](../images/figure-2.png "figure-2")
 
 ## Summary 
 
