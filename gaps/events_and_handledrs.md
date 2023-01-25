@@ -51,6 +51,92 @@
 
 > No matter how you assign the handler – it gets an event object as the first argument. That object contains the details about what’s happened.
 
+> **Almost** all events bubbles. For example the **focus** event does **NOT** bubbles.
+
+> The most deeply nested element that cause the event is called a **target element**, accessible as `event.target`.
+
+> `this` is the "current" element, the one that has a currently running handler on it.
+
+> _Note_ the difference from `this` (=`event.currentTarget`):
+-`event.target` - is the "target" element that initiated the event, it doesn't change trough the bubbling process.
+-`this` is the "current" element, the one that has a currently running handler on it.
+For instance, if we have a single handler `form.onClick`, then it can "catch" all clicks inside the form. No matter where the click happened, it bubbles up to <form> and runs the handler.
+In `form.onclick` handler:
+-`this`(=`event.currentTarget`) is the `<form>` element, because the handler runs on it.
+-`event.target` is the actual element isnide the form that was clicked
+
+```html
+<!-- HTML -->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="example.css">
+</head>
+
+<body>
+  A click shows both <code>event.target</code> and <code>this</code> to compare:
+
+  <form id="form">FORM
+    <div>DIV
+      <p>P</p>
+    </div>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+```css
+form {
+  background-color: green;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+div {
+  background-color: blue;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 100px;
+  height: 100px;
+}
+
+p {
+  background-color: red;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+}
+
+body {
+  line-height: 25px;
+  font-size: 16px;
+}
+```
+
+```js
+//JavaScript
+form.onclick = function(event) {
+  event.target.style.backgroundColor = 'yellow';
+
+  // chrome needs some time to paint yellow
+  setTimeout(() => {
+    alert("target = " + event.target.tagName + ", this=" + this.tagName);
+    event.target.style.backgroundColor = ''
+  }, 0);
+};
+```
 
 <small>
   References and resources
@@ -58,8 +144,11 @@
     <li>
       <a src="https://javascript.info/introduction-browser-events" style="color: naviblue; cursor: pointer"> Introduction to browser events</a>
     </li>
-        <li>
+    <li>
       <a src="https://www.kirupa.com/html5/event_capturing_bubbling_javascript.htm" style="color: naviblue; cursor: pointer">Event capturing bubbling javascript</a>
+    </li>
+    <li>
+      <a src="https://javascript.info/bubbling-and-capturing" style="color: naviblue; cursor: pointer">Bubling and capturing</a>
     </li>
   </ul>
 </small>

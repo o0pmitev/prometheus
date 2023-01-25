@@ -4,33 +4,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capturing and bubling</title>
-  <style>
-
-    html {
-      box-sizing: border-box;
-    }
-
-    *, *::before, *::after {box-sizing: inherit;}
-
-    section {
-      width: 100%;
-      padding: 100px;
-    }
-
-    .one { background-color: black; }
-    .two { background-color: tomato; }
-    .three { background-color: yellowgreen; }
-  </style>
+  <title>Document</title>
 </head>
-<body>
-  <section class="one">
-    <section class="two">
-      <section class="three">
-
-      </section>
-    </section>
-  </section>
-  <script src="./scripts/capturing_and_bubling.js" defer></script>
+<body onclick="alert('body')">
+  <!-- <section onclick="alert('The handler!')">
+    <em>If you click on the <code>EM</code>, the handler on the <code>SECTION</code> runs.</em>
+  </section> -->
+  <p onclick="alert('outher paragrahp')">bla bla</p>
+  <form action="" onclick="alert('form')">
+    <fieldset  onclick="alert('fieldset')">
+      <p  onclick="alert('paragraph')">This is a <strong>paragraph</strong> incide a <strong>fieldset</strong> inside a <strong>form</strong></p>
+    </fieldset>
+  </form>
 </body>
 </html>
