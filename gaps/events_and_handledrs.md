@@ -90,6 +90,7 @@ In `form.onclick` handler:
 ```
 
 ```css
+/* CSS */
 form {
   background-color: green;
   position: relative;
@@ -126,7 +127,7 @@ body {
 ```
 
 ```js
-//JavaScript
+// JavaScript
 form.onclick = function(event) {
   event.target.style.backgroundColor = 'yellow';
 
@@ -137,6 +138,15 @@ form.onclick = function(event) {
   }, 0);
 };
 ```
+> It's possible that `event.target` could equal `this` - it happens when  click is made directly on the `<form>` element.
+
+> A bubbling event goes from the target element straight up. Normaly goes upward till `<html>`, and then to `document` object, and some events even reach `window`, **calling all handlers on the path**. But any handler may decide the event has been fully processed and stop the bubbling.
+-`event.stopPropagation()` - method will do that.
+*Note*: the `event.stopPropagation()` method stops the move upwards, if there is more event handlers attached to the element they will be executed.
+-`event.stopImmediatePropagation()` - method stops the bubbling and **prevent** handlers on the current element from running.
+
+> **Don't stop the bubbling without a need!**
+---
 
 <small>
   References and resources
