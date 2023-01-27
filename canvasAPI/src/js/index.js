@@ -1,27 +1,22 @@
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
-canvas.addEventListener("mousemove", onMouseMove, false);
+let mouseX = 0;
+let mouseY = 0;
 
-function onMouseMove(e) {
-  console.log(e.offsetX + " " + e.offsetY);
+canvas.addEventListener("mousemove", setMousePosition, false);
+
+function setMousePosition(event) {
+  mouseX = event.offsetX;
+  mouseY = event.offsetY;
 }
 
-canvas.addEventListener("mousedown", buttonPressed, false);
-
-function buttonPressed(event) {
-  switch(event.button) {
-    case 0:
-      console.log("Left mouse button pressed!");
-      break;
-    case 1:
-      console.log("Middle mouse button pressed!");
-      break;
-    case 2: 
-      console.log("Right mouse button pressed!");
-      break;
-    default:
-      console.log("Nothing to do here!");
-      break;
-  }
+function update() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.beginPath();
+  context.arc(mouseX, mouseY, 50, 0, 2 * Math.PI,true);
+  context.fillStyle = "#333";
+  context.fill();
+  requestAnimationFrame(update);
 }
 
+update();
