@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <section>
+    <button>Right-click shows browser context menu</button>
+
+    <button oncontextmenu="alert('Draw our menu'); return false">
+      Right-click shows our context menu
+    </button>
+    <section>
+      <p>The property <code>event.defaultPrevented</code> is <strong>true</strong> if the <em>default</em> action was prevented, and <strong>false</strong> otherwise.</p>
+      <p>Sometimes we can use <code>event.defaultPrevented</code> instead, to signal other event handlers that the event was handled.</p>
+    </section>
+  </section>
+  <hr>
+<!------------------------------------------------->
+  <section id="bubbling_section">
+    <p>Right-click here for the document context menu</p>
+  <button id="elem">Right-click here for the button context menu</button>
+  <section>
+    <p>By right-clicking on the <em>button</em> element we trigger both events. </p>
+  </section>
+  </section>
+  <hr>
+<!------------------------------------------------->
+<section id="stopPropagationSection">
+  <p>Right-click for the document menu</p>
+  <button id="elem_1">Right-click for the button menu (fixed with event.stopPropagation)</button>
+  <section>
+    <p>
+      Now the button-level menu works as intended. But the price is high. We forever deny access to information about right-clicks for any outer code, including counters that gather statistics and so on. That’s quite unwise
+    </p>
+  </section>
+</section>
+<hr>
+<!------------------------------------------------->
+
+<section id="check_section">
+  <p id="check_paragraph">Right-click for the document menu (added a check for event.defaultPrevented)</p>
+  <button id="check_button">Right-click for the button menu</button>
+  <section>
+    <p>
+      An alternative solution would be to check in the document handler if the default action was prevented? If it is so, then the event was handled, and we don’t need to react on it.
+    </p>
+    <p>
+      Now everything also works correctly. If we have nested elements, and each of them has a context menu of its own, that would also work. Just make sure to check for event.defaultPrevented in each contextmenu handler.
+    </p>
+  </section>
+</section>
+<hr>
+<!------------------------------------------------->
+<section>
+  
+</section>
+
+<script src="./browser_defaults_part-2.js" defer></script>
+</body> 
+</html>

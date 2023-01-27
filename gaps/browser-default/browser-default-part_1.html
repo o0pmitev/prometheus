@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browser default actions</title>
+</head>
+<body>
+  <!-- <a href="/" onclick="return false">Click here (nothing happens)</a>
+  <a href="/" onclick="event.preventDefault()">Click here (nothing happens again)</a> -->
+<section>
+  <ul id="menu" class="menu">
+    <li><a href="/html">HTML</a></li>
+    <li><a href="/javascript">JavaScript</a></li>
+    <li><a href="/css">CSS</a></li>
+  </ul>
+</section>
+<section>
+  <input type="text" value="Focus works" onfocus="this.value=''">
+  <input type="text" onmousedown="return false" onfocus="this.value=''" value="Click me">
+</section>
+<section>
+  <button>Right-click shows browser context menu</button>
+  <button oncontextmenu="alert('Draw our menu'); return false">Right-click shows our context menu</button>
+</section>
+<script src="./browser-default-part_1.html" defer></script>
+</body>
+</html>
